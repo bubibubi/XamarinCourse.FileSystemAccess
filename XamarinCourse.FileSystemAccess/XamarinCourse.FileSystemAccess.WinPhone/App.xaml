@@ -1,0 +1,7 @@
+﻿<Application
+    x:Class="XamarinCourse.FileSystemAccess.WinPhone.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XamarinCourse.FileSystemAccess.WinPhone">
+
+</Application>
