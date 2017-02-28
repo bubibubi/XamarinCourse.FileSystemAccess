@@ -11,16 +11,20 @@ namespace XamarinCourse.FileSystemAccess.UWP
         public void SaveText(string filename, string text)
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile sampleFile = storageFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting).GetResults();
-            FileIO.WriteTextAsync(sampleFile, text).GetResults();
+            StorageFile storageFile = storageFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting)
+                .AsTask().Result;
+            FileIO.WriteTextAsync(storageFile, text)
+                .AsTask().Wait();
         }
         public string LoadText(string filename)
         {
             try
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile storageFile = storageFolder.GetFileAsync(filename).GetResults();
-                string text = FileIO.ReadTextAsync(storageFile).GetResults();
+                StorageFile storageFile = storageFolder.GetFileAsync(filename)
+                    .AsTask().Result;
+                string text = FileIO.ReadTextAsync(storageFile)
+                    .AsTask().Result;
                 return text;
             }
             catch
